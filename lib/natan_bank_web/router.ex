@@ -7,6 +7,10 @@ defmodule NatanBankWeb.Router do
 
   scope "/api", NatanBankWeb do
     pipe_through :api
+
+    # add news router
+    get "/", WelcomeControler, :index
+    resources "/users", UsersController, only: [:create, :update, :delete, :show]
   end
 
   # Enable LiveDashboard in development

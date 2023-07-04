@@ -1,2 +1,11 @@
  1-  mix ecto.setup
+ 2- mix phx.server
+ 3- mix ecto.gen.migration add_users_table
+    make changes on migration
+ 4- mix ecto.migrate
 
+exemple insert manual on the data base:
+changeset = NatanBank.Users.User.changeset(%{nome: "Natan", password_hash: "123", email: "Natan@sdfsf.com", cep: "12345678"})
+
+insert: Repo.insert(changeset)
+get: Repo.get(User,1)

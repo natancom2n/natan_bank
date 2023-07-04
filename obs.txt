@@ -1,0 +1,2 @@
+ 1-  mix ecto.setup
+

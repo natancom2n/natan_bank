@@ -1,13 +1,13 @@
 defmodule NatanBank.Repo.Migrations.AddUsersTable do
   use Ecto.Migration
-###search about unique constrange ECTO
-###search about unique constrange ECTO
-###search about unique constrange ECTO
-###search about unique constrange ECTO
-###search about unique constrange ECTO
-###search about unique constrange ECTO
-###search about unique constrange ECTO
-###search about unique constrange ECTO
+  ### search about unique constrange ECTO
+  ### search about unique constrange ECTO
+  ### search about unique constrange ECTO
+  ### search about unique constrange ECTO
+  ### search about unique constrange ECTO
+  ### search about unique constrange ECTO
+  ### search about unique constrange ECTO
+  ### search about unique constrange ECTO
   def change do
     create table("users") do
       add :nome, :string, null: false

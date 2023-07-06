@@ -15,17 +15,16 @@ defmodule NatanBank.Users.User do
     timestamps()
   end
 
-  #SEACHR ABOUT UNIQUE CONSTRANGE ECTO
-  #SEACHR ABOUT UNIQUE CONSTRANGE ECTO
-  #SEACHR ABOUT UNIQUE CONSTRANGE ECTO
-  #SEACHR ABOUT UNIQUE CONSTRANGE ECTO
-  #SEACHR ABOUT UNIQUE CONSTRANGE ECTO
-  #SEACHR ABOUT UNIQUE CONSTRANGE ECTO
-  #SEACHR ABOUT UNIQUE CONSTRANGE ECTO
-  #SEACHR ABOUT UNIQUE CONSTRANGE ECTO
+  # SEACHR ABOUT UNIQUE CONSTRANGE ECTO
+  # SEACHR ABOUT UNIQUE CONSTRANGE ECTO
+  # SEACHR ABOUT UNIQUE CONSTRANGE ECTO
+  # SEACHR ABOUT UNIQUE CONSTRANGE ECTO
+  # SEACHR ABOUT UNIQUE CONSTRANGE ECTO
+  # SEACHR ABOUT UNIQUE CONSTRANGE ECTO
+  # SEACHR ABOUT UNIQUE CONSTRANGE ECTO
+  # SEACHR ABOUT UNIQUE CONSTRANGE ECTO
 
-
-  #Changeset of UPDATE
+  # Changeset of Create
   def changeset(params) do
     %__MODULE__{}
     |> cast(params, @required_params_create)
@@ -33,7 +32,7 @@ defmodule NatanBank.Users.User do
     |> add_password_hash()
   end
 
-#Changeset of UPDATE
+  # Changeset of UPDATE
   def changeset(user, params) do
     user
     |> cast(params, @required_params_create)
@@ -48,7 +47,6 @@ defmodule NatanBank.Users.User do
     |> unique_constraint(:email)
     |> validate_format(:email, ~r/@/)
     |> validate_length(:cep, min: 8)
-
   end
 
   defp add_password_hash(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do

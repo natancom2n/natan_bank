@@ -3,7 +3,6 @@ defmodule NatanBank.Users.Update do
   alias NatanBank.Repo
 
   def call(%{"id" => id} = params) do
-
     case Repo.get(User, id) do
       nil -> {:error, :not_found}
       user -> update(user, params)
@@ -15,5 +14,4 @@ defmodule NatanBank.Users.Update do
     |> User.changeset(params)
     |> Repo.update()
   end
-
 end

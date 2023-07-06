@@ -2,7 +2,8 @@ defmodule NatanBank.Users.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @required_params [:nome, :password, :email, :cep]
+  @required_params_create [:nome, :password, :email, :cep]
+  @required_params_update [:nome, :email, :cep]
 
   schema "users" do
     field :nome, :string
@@ -22,15 +23,32 @@ defmodule NatanBank.Users.User do
   #SEACHR ABOUT UNIQUE CONSTRANGE ECTO
   #SEACHR ABOUT UNIQUE CONSTRANGE ECTO
   #SEACHR ABOUT UNIQUE CONSTRANGE ECTO
-  def changeset(user \\ %__MODULE__{}, params) do
-    user
-    |> cast(params, @required_params)
-    |> validate_required(@required_params)
-    |> validate_length(:nome, min: 3)
-    |> validate_format(:email, ~r/@/)
-    |> unique_constraint(:email)
-    |> validate_length(:cep, min: 8)
+
+
+  #Changeset of UPDATE
+  def changeset(params) do
+    %__MODULE__{}
+    |> cast(params, @required_params_create)
+    |> do_validations(@required_params_update)
     |> add_password_hash()
+  end
+
+#Changeset of UPDATE
+  def changeset(user, params) do
+    user
+    |> cast(params, @required_params_create)
+    |> do_validations(@required_params_update)
+    |> add_password_hash()
+  end
+
+  defp do_validations(changeset, fields) do
+    changeset
+    |> validate_required(fields)
+    |> validate_length(:nome, min: 3)
+    |> unique_constraint(:email)
+    |> validate_format(:email, ~r/@/)
+    |> validate_length(:cep, min: 8)
+
   end
 
   defp add_password_hash(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do

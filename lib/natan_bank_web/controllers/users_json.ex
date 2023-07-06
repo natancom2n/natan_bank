@@ -8,6 +8,10 @@ defmodule NatanBankWeb.UsersJSON do
     }
   end
 
+  def delete(%{user: user}), do: %{message: "User sucessful deleted", data: data(user)}
+  def get(%{user: user}), do: %{data: data(user)}
+  def update(%{user: user}), do: %{message: "User sucessful upgraded", data: data(user)}
+
   defp data(%User{} = user) do
     %{
       id: user.id,

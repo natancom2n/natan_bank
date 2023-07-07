@@ -2,10 +2,17 @@
  2- mix phx.server
  3- mix ecto.gen.migration add_users_table
     make changes on migration
- 4- mix ecto.migrate
+ 4- mix ecto.migrate   #mix ecto.reset drop the database
 
 exemple insert manual on the data base:
 changeset = NatanBank.Users.User.changeset(%{nome: "Natan", password_hash: "123", email: "Natan@sdfsf.com", cep: "12345678"})
 
 insert: Repo.insert(changeset)
 get: Repo.get(User,1)
+
+
+--------------------------
+
+1) Going to migration onside priv/repo/micrations and add
+2) Create the SCHEMA inside NatanBank 
+3) after make the changeset

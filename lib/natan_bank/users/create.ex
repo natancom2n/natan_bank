@@ -1,15 +1,17 @@
 defmodule NatanBank.Users.Create do
   alias NatanBank.Users.User
   alias NatanBank.Repo
+  alias NatanBank.ViaCep.Client, as: ViaCepCliente
 
-  def call(params) do
-    params
-    |> User.changeset()
-    |> Repo.insert()
+  def call(%{"cep" => cep} = params) do
+    with  {:ok, _result} <- ViaCepCliente.call(cep) do
 
-    # |> handle_insert()
+      params
+      |> User.changeset()
+      |> Repo.insert()
+
+      # |> handle_insert()
+    end
   end
-
-  # defp handle_insert({:ok, user}), do: user
-  # defp handle_insert({:error, changeset}), do: changeset
 end
+params = %{"cep" => "12312312", "email" => "bigjohn@fasil.ie", "nome" => "John", "password"=> "1231231"}

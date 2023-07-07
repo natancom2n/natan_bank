@@ -2,6 +2,8 @@ defmodule NatanBank.Users.User do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias NatanBank.Accounts.Account
+
   @required_params_create [:nome, :password, :email, :cep]
   @required_params_update [:nome, :email, :cep]
 
@@ -11,6 +13,8 @@ defmodule NatanBank.Users.User do
     field :password_hash, :string
     field :email, :string
     field :cep, :string
+    #docs: Ecto associetions
+    has_one :account, Account
 
     timestamps()
   end

@@ -4,11 +4,11 @@ defmodule NatanBank.Users.User do
 
   alias NatanBank.Accounts.Account
 
-  @required_params_create [:nome, :password, :email, :cep]
-  @required_params_update [:nome, :email, :cep]
+  @required_params_create [:name, :password, :email, :cep]
+  @required_params_update [:name, :email, :cep]
 
   schema "users" do
-    field :nome, :string
+    field :name, :string
     field :password, :string, virtual: true
     field :password_hash, :string
     field :email, :string
@@ -47,7 +47,7 @@ defmodule NatanBank.Users.User do
   defp do_validations(changeset, fields) do
     changeset
     |> validate_required(fields)
-    |> validate_length(:nome, min: 3)
+    |> validate_length(:name, min: 3)
     |> unique_constraint(:email)
     |> validate_format(:email, ~r/@/)
     |> validate_length(:cep, min: 8)
@@ -60,7 +60,7 @@ defmodule NatanBank.Users.User do
   defp add_password_hash(changeset), do: changeset
 end
 
-# params = %{nome: "Natan", cep: "12345678", email: "rafael@fss.com", password: "12344445"}
+# params = %{name: "Natan", cep: "12345678", email: "rafael@fss.com", password: "12344445"}
 # alias NatanBank.Users.User
 # changeset = User.changeset(params)
 # alias NatanBank.Repo

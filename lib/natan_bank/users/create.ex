@@ -14,4 +14,4 @@ defmodule NatanBank.Users.Create do
     end
   end
 end
-params = %{"cep" => "12312312", "email" => "bigjohn@fasil.ie", "nome" => "John", "password"=> "1231231"}
+#params = %{"cep" => "12312312", "email" => "bigjohn@fasil.ie", "name" => "John", "password"=> "1231231"}

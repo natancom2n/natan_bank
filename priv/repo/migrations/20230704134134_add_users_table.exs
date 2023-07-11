@@ -10,7 +10,7 @@ defmodule NatanBank.Repo.Migrations.AddUsersTable do
   ### search about unique constrange ECTO
   def change do
     create table("users") do
-      add :nome, :string, null: false
+      add :name, :string, null: false
       add :password_hash, :string, null: false
       add :email, :string, null: false
       add :cep, :string, null: false

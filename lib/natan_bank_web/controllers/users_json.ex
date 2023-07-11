@@ -17,7 +17,7 @@ defmodule NatanBankWeb.UsersJSON do
       id: user.id,
       cep: user.cep,
       email: user.email,
-      nome: user.nome
+      name: user.name
     }
   end
 end

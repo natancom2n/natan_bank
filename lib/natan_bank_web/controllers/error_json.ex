@@ -22,6 +22,8 @@ defmodule NatanBankWeb.ErrorJSON do
 
   def error(%{status: status}), do: %{status: status}
 
+  def error(%{msg: msg}), do: %{message: msg}
+
   def error(%{changeset: changeset}) do
     %{
       errors: Ecto.Changeset.traverse_errors(changeset, &translate_errors/1)

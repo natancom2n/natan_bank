@@ -10,10 +10,12 @@ defmodule NatanBankWeb.UsersController do
       conn
       # :created = 201
       |> put_status(:created)
+      # view of users_json.ex
       |> render(:create, user: user)
     end
   end
 
+  @spec delete(any, map) :: any
   def delete(conn, %{"id" => id}) do
     with {:ok, %User{} = user} <- Users.delete(id) do
       conn

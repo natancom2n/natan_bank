@@ -13,26 +13,18 @@ defmodule NatanBank.Users.User do
     field :password_hash, :string
     field :email, :string
     field :cep, :string
-    #docs: Ecto associetions
+    # docs: Ecto associetions
     has_one :account, Account
 
     timestamps()
   end
-
-  # SEACHR ABOUT UNIQUE CONSTRANGE ECTO
-  # SEACHR ABOUT UNIQUE CONSTRANGE ECTO
-  # SEACHR ABOUT UNIQUE CONSTRANGE ECTO
-  # SEACHR ABOUT UNIQUE CONSTRANGE ECTO
-  # SEACHR ABOUT UNIQUE CONSTRANGE ECTO
-  # SEACHR ABOUT UNIQUE CONSTRANGE ECTO
-  # SEACHR ABOUT UNIQUE CONSTRANGE ECTO
-  # SEACHR ABOUT UNIQUE CONSTRANGE ECTO
 
   # Changeset of Create
   def changeset(params) do
     %__MODULE__{}
     |> cast(params, @required_params_create)
     |> do_validations(@required_params_update)
+    |> unique_constraint(:email)
     |> add_password_hash()
   end
 

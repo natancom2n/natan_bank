@@ -25,5 +25,4 @@ defmodule NatanBank.ViaCep.Client do
   defp handle_response({:ok, _}) do
     {:ok, :internal_server_error}
   end
-
 end
